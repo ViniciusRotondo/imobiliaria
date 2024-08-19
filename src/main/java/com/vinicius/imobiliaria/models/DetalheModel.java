@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "TB_DETALHAMENTO_IMOVEL")
-public class DetalhamentoModel implements Serializable {
+public class DetalheModel implements Serializable {
     public static final long serialVersionUID = 1L;
 
     @Id
@@ -35,7 +35,7 @@ public class DetalhamentoModel implements Serializable {
     @JoinColumn(name = "imovel_id")
     private ImovelModel imovel;
 
-    public DetalhamentoModel(int qtdDormitorios, int qtdBanheiros, int vagaGaragem, double areaTotal, double areaTerreno, String infoLazer, List<Long> caracteristicas, ImovelModel imovel) {
+    public DetalheModel(int qtdDormitorios, int qtdBanheiros, int vagaGaragem, double areaTotal, double areaTerreno, String infoLazer, List<Long> caracteristicas, ImovelModel imovel) {
         this.qtdDormitorios = qtdDormitorios;
         this.qtdBanheiros = qtdBanheiros;
         this.vagaGaragem = vagaGaragem;
@@ -46,7 +46,7 @@ public class DetalhamentoModel implements Serializable {
         this.imovel = imovel;
     }
 
-    public DetalhamentoModel() {
+    public DetalheModel() {
     }
 
     public UUID getId() {

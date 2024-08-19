@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "TB_ADMINISTRADOR")
-public class AdministradorModel extends PessoaModel implements Serializable {
+public class AdmModel extends PessoaModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -16,9 +16,9 @@ public class AdministradorModel extends PessoaModel implements Serializable {
 
     private String senha;
 
-    public AdministradorModel() {}
+    public AdmModel() {}
 
-    public AdministradorModel(String nomeCompleto, String email, String contato, String senha) {
+    public AdmModel(String nomeCompleto, String email, String contato, String senha) {
         super(nomeCompleto, email, contato);
         this.senha = senha;
     }

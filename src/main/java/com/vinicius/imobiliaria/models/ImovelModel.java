@@ -2,7 +2,6 @@ package com.vinicius.imobiliaria.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -41,7 +40,7 @@ public class ImovelModel implements Serializable {
 
    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
    @OneToOne(mappedBy = "imovel", cascade = CascadeType.ALL)
-   private DetalhamentoModel detalhamento;
+   private DetalheModel detalhamento;
 
    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
    @OneToMany(mappedBy = "imovel", fetch = FetchType.LAZY)
@@ -51,7 +50,7 @@ public class ImovelModel implements Serializable {
 
     public ImovelModel(String titulo, EnderecoModel endereco, double valor, boolean paraVenda,
                        boolean paraLocacao, ProprietarioModel proprietario, CorretorModel corretor,
-                       DetalhamentoModel detalhamento, Set<FotoModel> fotos)
+                       DetalheModel detalhamento, Set<FotoModel> fotos)
     {
         this.titulo = titulo;
         this.endereco = endereco;
@@ -128,11 +127,11 @@ public class ImovelModel implements Serializable {
         this.corretor = corretor;
     }
 
-    public DetalhamentoModel getDetalhamento() {
+    public DetalheModel getDetalhamento() {
         return detalhamento;
     }
 
-    public void setDetalhamento(DetalhamentoModel detalhamento) {
+    public void setDetalhamento(DetalheModel detalhamento) {
         this.detalhamento = detalhamento;
     }
 
