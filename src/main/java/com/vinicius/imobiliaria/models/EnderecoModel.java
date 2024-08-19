@@ -10,13 +10,13 @@ public class EnderecoModel {
     private String cidade;
     private String bairro;
     private String rua;
-    private String numero;
+    private int numero;
     private String cep;
 
     public EnderecoModel() {}
 
 
-    public EnderecoModel(String cidade, String bairro, String rua, String numero, String cep) {
+    public EnderecoModel(String cidade, String bairro, String rua, int numero, String cep) {
         this.cidade = cidade;
         this.bairro = bairro;
         this.rua = rua;
@@ -52,11 +52,11 @@ public class EnderecoModel {
         this.rua = rua;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 

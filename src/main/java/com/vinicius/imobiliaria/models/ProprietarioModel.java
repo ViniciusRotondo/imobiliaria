@@ -23,9 +23,8 @@ public class ProprietarioModel extends PessoaModel implements Serializable {
 
     public ProprietarioModel() {}
 
-    public ProprietarioModel(String nomeCompleto, String email, String contato, Set<ImovelModel> imoveis) {
+    public ProprietarioModel(String nomeCompleto, String email, String contato) {
         super(nomeCompleto, email, contato);
-        this.imoveis = imoveis;
     }
 
     public UUID getId() {
@@ -34,13 +33,5 @@ public class ProprietarioModel extends PessoaModel implements Serializable {
 
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public Set<ImovelModel> getImoveis() {
-        return imoveis;
-    }
-
-    public void setImoveis(Set<ImovelModel> imoveis) {
-        this.imoveis = imoveis;
     }
 }

@@ -16,8 +16,8 @@ public class InteresseModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Embedded
-    private EnderecoModel endereco;
+    @Column(nullable = false)
+    private String cidade;
 
     @Column(nullable = false)
     private BigDecimal precoMinimo;
@@ -41,8 +41,8 @@ public class InteresseModel implements Serializable {
     public InteresseModel() {
     }
 
-    public InteresseModel(EnderecoModel endereco, BigDecimal precoMinimo, BigDecimal precoMaximo, String tipoImovel, int qtdDormitorios, List<Long> caracteristicas, ClienteModel cliente) {
-        this.endereco = endereco;
+    public InteresseModel(String cidade, BigDecimal precoMinimo, BigDecimal precoMaximo, String tipoImovel, int qtdDormitorios, List<Long> caracteristicas, ClienteModel cliente) {
+        this.cidade = cidade;
         this.precoMinimo = precoMinimo;
         this.precoMaximo = precoMaximo;
         this.tipoImovel = tipoImovel;
@@ -57,14 +57,6 @@ public class InteresseModel implements Serializable {
 
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public EnderecoModel getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(EnderecoModel endereco) {
-        this.endereco = endereco;
     }
 
     public BigDecimal getPrecoMinimo() {
@@ -113,5 +105,13 @@ public class InteresseModel implements Serializable {
 
     public void setCliente(ClienteModel cliente) {
         this.cliente = cliente;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 }

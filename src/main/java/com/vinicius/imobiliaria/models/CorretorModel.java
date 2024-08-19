@@ -24,10 +24,9 @@ public class CorretorModel extends PessoaModel implements Serializable {
 
     public CorretorModel() {}
 
-    public CorretorModel(String nomeCompleto, String email, String contato, String creci, Set<ImovelModel> imoveis) {
+    public CorretorModel(String nomeCompleto, String email, String contato, String creci) {
         super(nomeCompleto, email, contato);
         this.creci = creci;
-        this.imoveis = imoveis;
     }
 
     public UUID getId() {
