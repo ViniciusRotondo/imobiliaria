@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -19,6 +21,11 @@ public class ClienteModel extends PessoaModel implements Serializable {
     @OneToOne
     @JoinColumn(name = "interesse_id")
     private InteresseModel interesse;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    private Set<NegociacaoModel> negociacao = new HashSet<>();
+
 
     public ClienteModel() {};
 
@@ -41,5 +48,13 @@ public class ClienteModel extends PessoaModel implements Serializable {
 
     public void setInteresse(InteresseModel interesse) {
         this.interesse = interesse;
+    }
+
+    public Set<NegociacaoModel> getNegociacao() {
+        return negociacao;
+    }
+
+    public void setNegociacao(Set<NegociacaoModel> negociacao) {
+        this.negociacao = negociacao;
     }
 }

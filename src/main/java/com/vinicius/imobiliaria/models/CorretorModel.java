@@ -22,6 +22,11 @@ public class CorretorModel extends PessoaModel implements Serializable {
     @OneToMany(mappedBy = "corretor", fetch = FetchType.LAZY)
     private Set<ImovelModel> imoveis = new HashSet<>();
 
+   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+   @OneToMany(mappedBy = "corretor", fetch = FetchType.LAZY)
+   private Set<NegociacaoModel> negociacao = new HashSet<>();
+
+
     public CorretorModel() {}
 
     public CorretorModel(String nomeCompleto, String email, String contato, String creci) {
@@ -51,5 +56,13 @@ public class CorretorModel extends PessoaModel implements Serializable {
 
     public void setImoveis(Set<ImovelModel> imoveis) {
         this.imoveis = imoveis;
+    }
+
+    public Set<NegociacaoModel> getNegociacao() {
+        return negociacao;
+    }
+
+    public void setNegociacao(Set<NegociacaoModel> negociacao) {
+        this.negociacao = negociacao;
     }
 }

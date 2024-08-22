@@ -46,6 +46,10 @@ public class ImovelModel implements Serializable {
    @OneToMany(mappedBy = "imovel", fetch = FetchType.LAZY)
    private Set<FotoModel> fotos = new HashSet<>();
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "imovel", fetch = FetchType.LAZY)
+    private Set<NegociacaoModel> negociacao = new HashSet<>();
+
     public ImovelModel() {}
 
     public ImovelModel(String titulo, EnderecoModel endereco, double valor, boolean paraVenda,
@@ -141,6 +145,14 @@ public class ImovelModel implements Serializable {
 
     public void setFotos(Set<FotoModel> fotos) {
         this.fotos = fotos;
+    }
+
+    public Set<NegociacaoModel> getNegociacao() {
+        return negociacao;
+    }
+
+    public void setNegociacao(Set<NegociacaoModel> negociacao) {
+        this.negociacao = negociacao;
     }
 }
 
