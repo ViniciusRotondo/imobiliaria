@@ -1,5 +1,4 @@
 package br.com.imobiliaria.controllers;
-
 import br.com.imobiliaria.dtos.AdmRecordDto;
 import br.com.imobiliaria.models.AdmModel;
 import br.com.imobiliaria.services.AdmService;
