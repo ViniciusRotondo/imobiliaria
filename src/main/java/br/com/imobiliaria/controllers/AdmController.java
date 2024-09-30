@@ -13,7 +13,6 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/admin")
 public class AdmController {
-
     private final AdmService admService;
 
     public AdmController(AdmService admService) {
