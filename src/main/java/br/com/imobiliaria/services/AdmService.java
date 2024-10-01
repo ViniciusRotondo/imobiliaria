@@ -34,6 +34,7 @@ public class AdmService {
         return admRepository.save(adm);
     }
 
+
     @Transactional
     public void deleteAdm(UUID id) {
         admRepository.deleteById(id);
