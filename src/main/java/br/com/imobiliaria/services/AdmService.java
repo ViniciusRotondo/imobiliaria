@@ -13,7 +13,6 @@ import java.util.UUID;
 public class AdmService {
 
     private final AdmRepository admRepository;
-
     public AdmService(AdmRepository admRepository) {
         this.admRepository = admRepository;
     }
