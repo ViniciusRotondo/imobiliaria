@@ -1,8 +1,8 @@
 package br.com.imobiliaria.controllers;
-import br.com.imobiliaria.dtos.AdmRecordDto;
+
 import br.com.imobiliaria.models.AdmModel;
 import br.com.imobiliaria.services.AdmService;
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,27 +10,54 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/admin")
-public class AdmController {
-    private final AdmService admService;
+public class AdmController
+{
+    @Autowired
+    private AdmService admService;
 
-    public AdmController(AdmService admService) {
-        this.admService = admService;
+    @PostMapping("/admin")
+    public AdmModel addAdminDetails(@RequestBody AdmModel admModel)
+    {
+        return admService.createAdm(admModel);
     }
 
-    @GetMapping
-    public ResponseEntity<List<AdmModel>> getAllAdms(){
-        return ResponseEntity.status(HttpStatus.OK).body(admService.getAllAdms());
+    @GetMapping("/admin")
+    public List<AdmModel> getAllAdmsDetails()
+    {
+        return admService.getAllAdms();
     }
 
-    @PostMapping
-    public ResponseEntity<AdmModel> saveAdm(@RequestBody AdmRecordDto admRecordDto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(admService.saveAdm(admRecordDto));
+    @GetMapping("/admin/{id}")
+    public ResponseEntity<AdmModel> getAdmsDetails(@PathVariable UUID id)
+    {
+        AdmModel adm = admService.getAdmsDetails(id).orElse(null);
+        if(adm != null)
+        {
+            return ResponseEntity.ok().body(adm);
+        }
+        else
+        {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @PutMapping("/admin/{id}")
+    public ResponseEntity<AdmModel> updateAdmDetails(@PathVariable UUID id, @RequestBody AdmModel admModel)
+    {
+        AdmModel updatedAdm = admService.updateAdmDatails(id, admModel);
+        if(updatedAdm != null)
+        {
+            return ResponseEntity.ok(updatedAdm);
+        }
+        else
+        {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteAdm(@PathVariable UUID id) {
+    @DeleteMapping("/admin/{id}")
+    public ResponseEntity<Void> deleteAdm(@PathVariable UUID id)
+    {
         admService.deleteAdm(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Administrador deletado com sucesso");
+        return ResponseEntity.noContent().build();
     }
 }

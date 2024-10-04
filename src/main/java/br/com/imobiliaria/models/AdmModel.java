@@ -12,8 +12,10 @@ public class AdmModel extends PessoaModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private UUID id;
 
+    @Column
     private String senha;
 
     public AdmModel() {}

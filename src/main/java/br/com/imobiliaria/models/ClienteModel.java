@@ -38,16 +38,8 @@ public class ClienteModel extends PessoaModel implements Serializable {
         return id;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
     public InteresseModel getInteresse() {
         return interesse;
-    }
-
-    public void setInteresse(InteresseModel interesse) {
-        this.interesse = interesse;
     }
 
     public Set<NegociacaoModel> getNegociacao() {
