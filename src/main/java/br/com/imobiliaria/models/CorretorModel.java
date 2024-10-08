@@ -15,7 +15,7 @@ public class CorretorModel extends PessoaModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String creci;
 
    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -36,10 +36,6 @@ public class CorretorModel extends PessoaModel implements Serializable {
 
     public UUID getId() {
         return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public String getCreci() {

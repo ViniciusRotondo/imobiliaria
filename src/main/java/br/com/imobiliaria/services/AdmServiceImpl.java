@@ -44,7 +44,7 @@ public class AdmServiceImpl implements AdmService
         }
         else
         {
-        throw new RuntimeException("Administrador não encontrado com esse ID: " + id);
+            throw new RuntimeException("Administrador não encontrado com esse ID: " + id);
         }
     }
 
